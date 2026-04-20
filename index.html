@@ -281,9 +281,9 @@
       #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 8rem; }
       .hero-left { order: 1; }
       .hero-right { order: -1; display: flex; justify-content: center; padding-bottom: 3rem; }
-      .hero-photo-frame { width: 100%; max-width: 320px; }
-      .hero-img-wrap { transform: rotate(1.5deg); }
-      .hero-badge { left: -0.5rem; }
+      .hero-photo-frame { width: calc(100% + 3rem); max-width: none; margin: 0 -1.5rem; }
+      .hero-img-wrap { transform: rotate(0); width: 100%; border-radius: 0; }
+      .hero-badge { left: 1.5rem; bottom: 1.5rem; }
       .hero-accent-line { display: none; }
     }
 
@@ -298,6 +298,27 @@
 
     /* ═══════════════════════════ SECTION SHARED ═══════════════════════════ */
     section { padding: 7rem 0; }
+    @media (max-width: 640px) {
+      section { padding: 4.5rem 0; }
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+    .section-count {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(3rem, 7vw, 6rem);
+      color: var(--accent);
+      line-height: 1;
+      opacity: 0.12;
+      letter-spacing: -0.04em;
+    }
 
     .section-label {
       font-size: 0.7rem;
@@ -395,10 +416,10 @@
     }
 
     @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; gap: 4rem; }
-      .about-photo-col { order: -1; max-width: 100%; width: 100%; display: flex; justify-content: center; }
-      .about-img-wrap { max-width: 480px; width: 100%; }
-      .about-accent-box { position: relative; width: 100%; top: 0; left: 0; transform: none; margin-top: 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-photo-col { order: -1; width: calc(100% + 3rem); margin: 0 -1.5rem; display: flex; justify-content: center; }
+      .about-img-wrap { max-width: 100%; width: 100%; border-radius: 0; }
+      .about-accent-box { position: relative; width: 100%; top: 0; left: 0; transform: none; margin-top: 1.5rem; padding: 0 1.5rem; }
       .about-langs { justify-content: center; }
     }
 
@@ -517,7 +538,8 @@
 
     @media (max-width: 860px) {
       .skills-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .skills-photo-col { width: 100%; max-width: 320px; opacity: 0.85; margin: 0 auto; display: block; }
+      .skills-photo-col { width: calc(100% + 3rem); margin: 0 -1.5rem; display: block; opacity: 1; }
+      .skills-img-wrap { border-radius: 0; }
       .skills-img-tag { display: none; }
     }
 
@@ -538,15 +560,7 @@
       gap: 2rem;
       flex-wrap: wrap;
     }
-    .exp-count {
-      font-family: var(--font-head);
-      font-weight: 800;
-      font-size: clamp(3rem, 7vw, 6rem);
-      color: var(--accent);
-      line-height: 1;
-      opacity: 0.15;
-      letter-spacing: -0.04em;
-    }
+    /* Removed exp-count styles as they are now global in .section-count */
 
     .timeline { display: flex; flex-direction: column; }
 
@@ -753,8 +767,8 @@
 
     @media (max-width: 900px) {
       .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
-      .contact-photo-col { max-width: 100%; width: 100%; display: flex; justify-content: center; }
-      .contact-img-wrap { max-width: 500px; width: 100%; }
+      .contact-photo-col { width: calc(100% + 3rem); margin: 3rem -1.5rem 0; display: flex; justify-content: center; }
+      .contact-img-wrap { max-width: 100%; width: 100%; border-radius: 0; }
     }
 
     @media (max-width: 640px) {
@@ -846,8 +860,13 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-text">
-        <div class="section-label reveal" data-nl="Over mij" data-en="About me">About me</div>
-        <h2 class="section-title reveal" data-nl="Gedreven en leergierig" data-en="Driven &amp; eager">Driven &amp; eager</h2>
+        <div class="section-header reveal">
+          <div class="section-header-text">
+            <div class="section-label" data-nl="Over mij" data-en="About me">About me</div>
+            <h2 class="section-title" data-nl="Gedreven en leergierig" data-en="Driven &amp; eager">Driven &amp; eager</h2>
+          </div>
+          <div class="section-count">01</div>
+        </div>
 
         <p class="about-lead reveal" data-nl="Creatief, gedreven en altijd op zoek naar een frisse invalshoek. Ik geloof dat de beste oplossingen ontstaan als je buiten de gebaande paden durft te denken." data-en="Creative, driven and always looking for a fresh angle. I believe the best solutions come from daring to think outside the box.">Creative, driven and always looking for a fresh angle. I believe the best solutions come from daring to think outside the box.</p>
 
@@ -875,9 +894,14 @@
 <section id="skills">
   <div class="container">
     <div class="skills-layout">
-      <div>
-        <div class="section-label reveal" data-nl="Wat ik doe" data-en="What I do">What I do</div>
-        <h2 class="section-title reveal" data-nl="Skills" data-en="Skills">Skills</h2>
+      <div class="skills-text-col">
+        <div class="section-header reveal">
+          <div class="section-header-text">
+            <div class="section-label" data-nl="Technische Expertise" data-en="Technical Expertise">Technical Expertise</div>
+            <h2 class="section-title" data-nl="Mijn Skills" data-en="My Skills">My Skills</h2>
+          </div>
+          <div class="section-count">02</div>
+        </div>
         <div class="skills-list">
           <div class="skill-row reveal">
             <div class="skill-left">
@@ -938,12 +962,12 @@
 <!-- ═══════════════════════════ EXPERIENCE ═══════════════════════════ -->
 <section id="experience">
   <div class="container">
-    <div class="exp-header reveal">
-      <div class="exp-header-text">
+    <div class="section-header reveal">
+      <div class="section-header-text">
         <div class="section-label" data-nl="Werkervaring" data-en="Work experience">Work experience</div>
-        <h2 class="section-title" style="margin-bottom:0" data-nl="Ervaring" data-en="Experience">Experience</h2>
+        <h2 class="section-title" data-nl="Ervaring" data-en="Experience">Experience</h2>
       </div>
-      <div class="exp-count">03</div>
+      <div class="section-count">03</div>
     </div>
 
     <div class="timeline">
@@ -992,8 +1016,13 @@
 <!-- ═══════════════════════════ EDUCATION ═══════════════════════════ -->
 <section id="education">
   <div class="container">
-    <div class="section-label reveal" data-nl="Opleiding" data-en="Education">Education</div>
-    <h2 class="section-title reveal" data-nl="Opleiding" data-en="Education">Education</h2>
+    <div class="section-header reveal">
+      <div class="section-header-text">
+        <div class="section-label" data-nl="Academische Basis" data-en="Academic Foundation">Academic Foundation</div>
+        <h2 class="section-title" data-nl="Educatie" data-en="Education">Education</h2>
+      </div>
+      <div class="section-count">04</div>
+    </div>
     <div class="edu-grid">
       <div class="edu-card reveal">
         <div class="edu-hat">
@@ -1023,8 +1052,14 @@
 <section id="contact">
   <div class="container">
     <div class="contact-grid">
-      <div>
-        <div class="section-label reveal" data-nl="Contact" data-en="Get in touch">Get in touch</div>
+      <div class="contact-text">
+        <div class="section-header reveal">
+          <div class="section-header-text">
+            <div class="section-label" data-nl="Laten we praten" data-en="Get in touch">Get in touch</div>
+            <h2 class="section-title" data-nl="Contact" data-en="Contact">Contact</h2>
+          </div>
+          <div class="section-count">05</div>
+        </div>
         <h2 class="contact-headline reveal" data-nl="Laten we samenwerken." data-en="Let's work together.">Let's work<br>together.</h2>
         <p class="contact-sub reveal" data-nl="Beschikbaar voor freelance werk, neem gerust contact op." data-en="Available for freelance work, feel free to reach out.">Available for freelance work, feel free to reach out.</p>
         <a href="mailto:timo.leppers1@outlook.com" class="contact-email reveal">
