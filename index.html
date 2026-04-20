@@ -141,12 +141,15 @@
     /* ═══════════════════════════ HERO ═══════════════════════════ */
     #hero {
       min-height: 100vh;
-      padding: 7rem 2.5rem 4rem;
+      padding: 7rem 0 4rem;
+    }
+    .hero-inner {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 2.5rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: 5fr 4fr;
+      gap: 4rem;
       align-items: end;
       position: relative;
     }
@@ -278,7 +281,8 @@
     }
 
     @media (max-width: 900px) {
-      #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 4.5rem; gap: 1rem; overflow-x: hidden; width: 100%; }
+      #hero { min-height: auto; padding-top: 4.5rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 1rem; overflow-x: hidden; width: 100%; }
       .hero-left { order: 1; padding-top: 0; margin-top: 0; width: 100%; }
       .hero-right { order: -1; display: flex; justify-content: center; padding-bottom: 0; width: 100%; }
       .hero-photo-frame { width: 100%; max-width: min(345px, 90vw); margin-bottom: 0; }
@@ -288,7 +292,7 @@
     }
 
     @media (max-width: 640px) {
-      #hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
       .hero-name { font-size: 3.2rem; margin-bottom: 1.2rem; }
       .hero-ctas { flex-direction: column; width: 100%; gap: 1rem; }
       .hero-ctas .btn { width: 100%; justify-content: center; }
@@ -826,6 +830,7 @@
 
 <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
 <section id="hero">
+  <div class="hero-inner">
   <div class="hero-left">
     <div class="hero-label reveal" data-nl="Portfolio 2025" data-en="Portfolio 2025">Portfolio 2025</div>
     <h1 class="hero-name reveal d1">
@@ -849,6 +854,7 @@
       </div>
       <div class="hero-badge" data-nl="Tumpak Sewu, Java 🇮🇩" data-en="Tumpak Sewu, Java 🇮🇩">Tumpak Sewu, Java 🇮🇩</div>
     </div>
+  </div>
   </div>
 </section>
 
