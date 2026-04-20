@@ -23,7 +23,7 @@
       --font-body: 'DM Sans', sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     body {
       background: var(--bg);
@@ -278,10 +278,10 @@
     }
 
     @media (max-width: 900px) {
-      #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 4.5rem; gap: 1rem; }
+      #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 4.5rem; gap: 1rem; overflow-x: hidden; }
       .hero-left { order: 1; padding-top: 0; margin-top: 0; }
       .hero-right { order: -1; display: flex; justify-content: center; padding-bottom: 0; }
-      .hero-photo-frame { width: 100%; max-width: 345px; margin-bottom: 0; }
+      .hero-photo-frame { width: 100%; max-width: min(345px, 85vw); margin-bottom: 0; }
       .hero-img-wrap { transform: rotate(1.5deg); width: 100%; border-radius: 0 80px 0 0; }
       .hero-badge { left: -0.5rem; bottom: 1.5rem; }
       .hero-accent-line { display: none; }
@@ -309,6 +309,9 @@
       margin-bottom: 3.5rem;
       border-bottom: 1px solid var(--border);
       padding-bottom: 1rem;
+    }
+    @media (max-width: 640px) {
+      .section-header { margin-bottom: 2rem; }
     }
     .section-count {
       font-family: var(--font-head);
@@ -416,6 +419,7 @@
     }
 
     @media (max-width: 900px) {
+      #about { overflow: hidden; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-photo-col { order: -1; width: calc(100% + 3rem); margin: 0 -1.5rem; display: flex; justify-content: center; }
       .about-img-wrap { max-width: 100%; width: 100%; border-radius: 0; }
@@ -537,6 +541,7 @@
     }
 
     @media (max-width: 860px) {
+      #skills { overflow-x: hidden; }
       .skills-layout { grid-template-columns: 1fr; gap: 3rem; }
       .skills-photo-col { width: calc(100% + 3rem); margin: 0 -1.5rem; display: block; opacity: 1; }
       .skills-img-wrap { border-radius: 0; }
@@ -552,14 +557,7 @@
     /* ═══════════════════════════ EXPERIENCE ═══════════════════════════ */
     #experience { border-top: 1px solid var(--border); }
 
-    .exp-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 4rem;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
+    /* Removed exp-header styles as they are now global in .section-header */
     /* Removed exp-count styles as they are now global in .section-count */
 
     .timeline { display: flex; flex-direction: column; }
